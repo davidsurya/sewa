@@ -10,6 +10,8 @@
 
 @section('custom-script')
 <script>
+    let i = 0;
+
     $(".btn-tambah").click(function() {
         let kotak_tpl = getKotakTemplate();
 
@@ -21,9 +23,10 @@
     }));
 
     function getKotakTemplate() {
+        i++;
         let tpl = `<div class="row">
             <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1 child-kotak">
-                <div class="col-md-3"> Kotak Kecil </div>
+                <div class="col-md-3"> Kotak Kecil `+i+`</div>
                 <button class="btn btn-warning btn-hapus">Hapus</button>
             </div>
         </div>`;

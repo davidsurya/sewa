@@ -36,6 +36,7 @@
                     </li>
                     <li><a href="#">Pemesanan</a></li>
                     <li><a href="#">Pembayaran</a></li>
+                    <li><a href="{{ route('jquery-test') }}">JQuery Test</a></li>
                 </ul>
             </ul>
         </div>

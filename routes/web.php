@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::get('/jquery-test', function () {
     return view('jquery.app');
-});
+})->name('jquery-test');
