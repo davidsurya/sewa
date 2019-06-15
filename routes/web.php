@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('home.app');
 });
+
+Route::get('/jquery-test', function () {
+    return view('jquery.app');
+});

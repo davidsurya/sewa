@@ -9,3 +9,20 @@
 .content > div > div > span{
     margin-top: 10px;
 }
+
+.main-kotak, .child-kotak {
+    border: 1px black;
+    border-style: solid;
+}
+
+.child-kotak {
+    min-height: 100px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.btn-hapus {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
