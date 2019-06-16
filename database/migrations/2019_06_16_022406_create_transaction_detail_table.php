@@ -17,7 +17,7 @@ class CreateTransactionDetailTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_transaction_master')->unsigned();
             $table->string('name');
-            $table->enum('type', ['income', 'expense']);
+            $table->enum('type', ['income', 'expense'])->default('income');
             $table->double('amount_idr', '9', '2');
             $table->timestamps();
             $table->softDeletes();
