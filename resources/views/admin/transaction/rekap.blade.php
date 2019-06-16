@@ -19,24 +19,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($results as $result)
                     <tr>
-                        <td>1</td>
-                        <td>12 Agustus 2019</td>
-                        <td>Income</td>
-                        <td>950.000</td>
+                        <td>{{ $result->id }}</td>
+                        <td>{{ $result->id }}</td>
+                        <td>{{ $result->id }}</td>
+                        <td>{{ $result->id }}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>12 Agustus 2019</td>
-                        <td>Income</td>
-                        <td>950.000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>12 Agustus 2019</td>
-                        <td>Income</td>
-                        <td>950.000</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -49,20 +39,11 @@
                             <option>30</option>
                         </select>
                     </div>
-                    <label for="inputType" class="col-md-5 control-label">Menampilkan 10 dari 100</label>
+                    <label for="inputType" class="col-md-5 control-label">Menampilkan {{ app('request')->per_page }} dari {{ $results->total() }}</label>
                 </div>
             </div>
-
             <div class="col-md-6">
-                <div class="pagination">
-                    <ul>
-                      <li><a href="#">«</a></li>
-                      <li><a href="#">10</a></li>
-                      <li class="active"><a href="#">11</a></li>
-                      <li><a href="#">12</a></li>
-                      <li><a href="#">»</a></li>
-                    </ul>
-                </div>
+                {{ $results->links() }}
             </div>
         </div>
     </div>

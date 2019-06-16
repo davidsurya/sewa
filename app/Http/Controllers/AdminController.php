@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\TransactionDetail;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -19,6 +20,10 @@ class AdminController extends Controller
 
     public function getRekap(Request $request)
     {
-        return view('admin.transaction.rekap');
+        $perPage = $request->get('per_page', 10);
+
+        $results = TransactionDetail::paginate($perPage);
+
+        return view('admin.transaction.rekap', ['results' => $results]);
     }
 }
