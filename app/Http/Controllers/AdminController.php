@@ -11,4 +11,14 @@ class AdminController extends Controller
     {
         return view('admin.app');
     }
+
+    public function add(Request $request)
+    {
+        return view('admin.transaction.add');
+    }
+
+    public function getRekap(Request $request)
+    {
+        return view('admin.transaction.rekap');
+    }
 }
