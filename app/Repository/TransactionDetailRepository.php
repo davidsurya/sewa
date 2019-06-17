@@ -31,4 +31,29 @@ class TransactionDetailRepository
 
         return $results;
     }
+
+    public function getListTransaction($request)
+    {
+        $perPage = $request->get('per_page', 10);
+        $paidFrom = $request->get('date_paid_from');
+        $paidTo = $request->get('date_paid_to');
+        $category = $request->get('type', 'income');
+        $name = $request->get('name');
+
+        $query = TransactionMaster::join('transaction_detail AS td', 'td.id_transaction_master', '=', 'transaction_master.id')
+                    ->where('td.type', $category);
+
+        if (isset($paidFrom) && isset($paidTo)) {
+            $query->whereDate('transaction_master.date_paid', '>=', $paidFrom)
+                ->whereDate('transaction_master.date_paid', '<=', $paidTo);
+        }
+
+        if (isset($name)) {
+            $query->where('td.name', 'LIKE', '%'.$name.'%');
+        }
+
+        $results = $query->paginate($perPage);
+
+        return $results;
+    }
 }

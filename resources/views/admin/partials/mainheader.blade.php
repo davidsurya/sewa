@@ -1,7 +1,7 @@
 <!-- Main Header -->
 <header class="main-header">
     <!-- Logo -->
-    <a href="{{ url('/admin') }}" class="logo">        
+    <a href="{{ url('/admin') }}" class="logo">
         <span class="logo-lg">Dashboard Admin</span>
     </a>
 
@@ -14,8 +14,8 @@
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                @if (Auth::guest())                
-                <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
+                @if (Auth::guest())
+                {{-- <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li> --}}
                 @else
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">

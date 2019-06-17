@@ -30,4 +30,11 @@ class AdminController extends Controller
 
         return view('admin.transaction.rekap', ['results' => $results]);
     }
+
+    public function getList(Request $request)
+    {
+        $results = $this->repository->getListTransaction($request);
+
+        return view('admin.transaction.list', ['results' => $results]);
+    }
 }

@@ -22,5 +22,6 @@ Route::get('/jquery-test', function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', 'AdminController@index');
     Route::get('/add', 'AdminController@add');
+    Route::get('/list', 'AdminController@getList');
     Route::get('/rekap', 'AdminController@getRekap');
 });

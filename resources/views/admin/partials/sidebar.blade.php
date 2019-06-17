@@ -11,7 +11,7 @@
                 <a href="#"><i class='fa fa-money'></i> <span>Data Transaksi</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/add') }}">Tambah Data Transaksi</a></li>
-                    <li><a href="#">List Data Transaksi</a></li>
+                    <li><a href="{{ url('admin/list') }}">List Data Transaksi</a></li>
                     <li><a href="{{ url('admin/rekap') }}">Rekap Transaksi</a></li>
                 </ul>
             </li>
