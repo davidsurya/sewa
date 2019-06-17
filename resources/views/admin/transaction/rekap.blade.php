@@ -3,32 +3,33 @@
 @section('main-content')
 <div class="box box-info">
     <div class="box-header">
+        {{-- {{ app('request')->fullUrl() }} --}}
         <i class="fa fa-list"></i>
         <h3 class="box-title">Rekap Transaksi</h3>
     </div>
 
     <div class="box-body">
         <div class="col-md-12">
-            <form class="form-inline pull-right" action="/action_page.php">
+            <form class="form-inline pull-right" action="{{ url('admin/rekap') }}" method="GET">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input type="email" class="form-control" id="email">
+                        <input type="date" name="date_paid_from" class="form-control" id="email">
                         <span class="fa fa-calendar"></span>
                     </div>
                     <div class="form-group">
                         <label for="email">to</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="date" name="date_paid_to" class="form-control" id="email">
                         <span class="fa fa-calendar"></span>
                     </div>
                     <div class="form-group">
-                        <select class="form-control">
+                        <select class="form-control" name="type">
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
                     </div>
                     <div class="form-group">
                         {{-- <span class="fa fa-search"></span> --}}
-                        <input type="name" class="form-control" id="name">
+                        <input type="text" class="form-control" name="name">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary">Search</button>

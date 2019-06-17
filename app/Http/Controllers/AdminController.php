@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\TransactionDetail;
+use App\Repository\TransactionDetailRepository;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    protected $repository;
+
+    function __construct(TransactionDetailRepository $repository)
+    {
+        $this->repository = $repository;
+    }
 
     public function index(Request $request)
     {
@@ -20,9 +26,7 @@ class AdminController extends Controller
 
     public function getRekap(Request $request)
     {
-        $perPage = $request->get('per_page', 10);
-
-        $results = TransactionDetail::paginate($perPage);
+        $results = $this->repository->getRekap($request);
 
         return view('admin.transaction.rekap', ['results' => $results]);
     }
