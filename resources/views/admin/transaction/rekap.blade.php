@@ -9,6 +9,35 @@
 
     <div class="box-body">
         <div class="col-md-12">
+            <form class="form-inline pull-right" action="/action_page.php">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="email">
+                        <span class="fa fa-calendar"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">to</label>
+                        <input type="email" class="form-control" id="email">
+                        <span class="fa fa-calendar"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        {{-- <span class="fa fa-search"></span> --}}
+                        <input type="name" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-12">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -22,9 +51,9 @@
                     @foreach($results as $result)
                     <tr>
                         <td>{{ $result->id }}</td>
-                        <td>{{ $result->id }}</td>
-                        <td>{{ $result->id }}</td>
-                        <td>{{ $result->id }}</td>
+                        <td>{{ date('d M Y', strtotime($result->created_at)) }}</td>
+                        <td>{{ ucfirst($result->type) }}</td>
+                        <td>{{ number_format($result->amount_idr, 0) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -39,7 +68,10 @@
                             <option>30</option>
                         </select>
                     </div>
-                    <label for="inputType" class="col-md-5 control-label">Menampilkan {{ app('request')->per_page }} dari {{ $results->total() }}</label>
+                    @php
+                        $showTotal = $results->total() < $results->perPage() ? $results->total() : $results->perPage();
+                    @endphp
+                    <label for="inputType" class="col-md-5 control-label">Menampilkan {{ $showTotal }} dari {{ $results->total() }}</label>
                 </div>
             </div>
             <div class="col-md-6">
