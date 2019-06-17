@@ -36,7 +36,8 @@
                     </li>
                     <li><a href="#">Pemesanan</a></li>
                     <li><a href="#">Pembayaran</a></li>
-                    <li><a href="{{ route('jquery-test') }}">JQuery Test</a></li>
+                    <li><a href="{{ url('jquery-test') }}">JQuery Test</a></li>
+                    <li><a href="{{ url('admin') }}">Admin Panel</a></li>
                 </ul>
             </ul>
         </div>
