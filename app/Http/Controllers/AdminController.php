@@ -37,4 +37,13 @@ class AdminController extends Controller
 
         return view('admin.transaction.list', ['results' => $results]);
     }
+
+    public function deleteTransaction(Request $request)
+    {
+        $idTransactionDetail = $request->get('id_transaction_detail');
+
+        $this->repository->deleteTransactionDetail($idTransactionDetail);
+
+        return redirect()->back();
+    }
 }

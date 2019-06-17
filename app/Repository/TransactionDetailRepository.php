@@ -41,6 +41,7 @@ class TransactionDetailRepository
         $name = $request->get('name');
 
         $query = TransactionMaster::join('transaction_detail AS td', 'td.id_transaction_master', '=', 'transaction_master.id')
+                    ->whereNull('td.deleted_at')
                     ->where('td.type', $category);
 
         if (isset($paidFrom) && isset($paidTo)) {
@@ -55,5 +56,12 @@ class TransactionDetailRepository
         $results = $query->paginate($perPage);
 
         return $results;
+    }
+
+    public function deleteTransactionDetail($idTransactionDetail)
+    {
+        $result = TransactionDetail::find($idTransactionDetail)->delete();
+
+        return $result;
     }
 }

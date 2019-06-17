@@ -24,4 +24,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/add', 'AdminController@add');
     Route::get('/list', 'AdminController@getList');
     Route::get('/rekap', 'AdminController@getRekap');
+    Route::delete('/delete/transaction', 'AdminController@deleteTransaction');
 });

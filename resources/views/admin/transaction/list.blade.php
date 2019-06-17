@@ -28,7 +28,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        {{-- <span class="fa fa-search"></span> --}}
                         <input type="text" class="form-control" name="name">
                     </div>
                     <div class="form-group">
@@ -68,8 +67,8 @@
                         <td>{{ $result->name }}</td>
                         <td>{{ number_format($result->amount_idr, 0) }}</td>
                         <td>
-                            <a href="" class="fa fa-trash"></a>
-                            <a href="" class="fa fa-pencil"></a>
+                            <a href="#" class="fa fa-trash btn-delete" data-id="{{ $result->id }}" data-toggle="modal" data-target="#deleteModal"></a>
+                            <a href="#" class="fa fa-pencil"></a>
                         </td>
                     </tr>
                     @endforeach
@@ -97,4 +96,35 @@
         </div>
     </div>
 </div>
+
+<!-- Delete Modal -->
+<div id="deleteModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Hapus Data Transaksi</h4>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin untuk menghapus data ini ?</p>
+            </div>
+            <div class="modal-footer">
+                <form id="deleteForm" action="{{ url('/admin/delete/transaction') }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <input id="id_transaction" type="text" name="id_transaction_detail" hidden="hidden">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@stop
+
+@section('custom-script')
+<script>
+    $(".btn-delete").click(function(){
+        $("#id_transaction").val($(this).data('id'));
+    });
+</script>
 @stop
